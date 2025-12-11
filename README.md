@@ -32,23 +32,31 @@ Use this repo to: **try challenges, submit PRs, get contributor recognition, and
 
 ```
 security-challenges/
-├─ .github/
-│  ├─ ISSUE_TEMPLATE.md
-│  └─ PULL_REQUEST_TEMPLATE.md
-├─ challenges/
-│  ├─ solidity/
-│  │  ├─ challenge-01-signature-bypass/
-│  │  │  ├─ README.md
-│  │  │  ├─ contract.sol
-│  │  │  └─ solutions/
-│  │  │     └─ example-solution.md
-│  │  └─ challenge-02-reentrancy-foundations/
-│  ├─ web-security/
-│  └─ zk/
-├─ CONTRIBUTING.md
-├─ LEADERBOARD.md
-├─ README.md    ← (this file)
-└─ CODE_OF_CONDUCT.md
+│
+├── .github/
+│   ├── ISSUE_TEMPLATE.md
+│   └── PULL_REQUEST_TEMPLATE.md
+│
+├── challenges/               ← Official ASVSI challenges
+│   ├── solidity/
+│   │   ├── challenge-01-signature-bypass/
+│   │   │   ├── README.md
+│   │   │   ├── contract.sol
+│   │   │   └── solutions/
+│   │   │       └── example-solution.md
+│   │   ├── challenge-02-reentrancy-basics/
+│   │   └── ...
+│   ├── web-security/
+│   └── zk/
+│
+├── proposals/                ← ⭐ Community challenge requests
+│   ├── README.md
+│   └── template.md
+│
+├── CONTRIBUTING.md
+├── LEADERBOARD.md
+├── CODE_OF_CONDUCT.md
+└── README.md
 ```
 
 ---
