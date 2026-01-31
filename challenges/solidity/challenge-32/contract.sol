@@ -1,31 +1,18 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+// Compatible with OpenZeppelin Contracts ^5.5.0
+pragma solidity ^0.8.27;
 
-contract GasHeavyVault {
-    address[] public users;
-    mapping(address => uint256) public balances;
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
-    function deposit() external payable {
-        if (balances[msg.sender] == 0) {
-            users.push(msg.sender);
-        }
-        balances[msg.sender] += msg.value;
-    }
+contract LPToken is ERC20, ERC20Burnable, Ownable {
+    constructor(address initialOwner)
+        ERC20("LPToken", "LPT")
+        Ownable(initialOwner)
+    {}
 
-    function distributeRewards() external {
-        require(users.length > 0, "No users");
-
-        for (uint256 i = 0; i < users.length; i++) {
-            address user = users[i];
-            balances[user] += 1 ether;
-        }
-    }
-
-    function withdraw() external {
-        require(balances[msg.sender] > 0, "No balance");
-
-        uint256 amount = balances[msg.sender];
-        balances[msg.sender] = 0;
-        payable(msg.sender).transfer(amount);
+    function mint(address to, uint256 amount) public onlyOwner {
+        _mint(to, amount);
     }
 }
